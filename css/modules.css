@@ -1,0 +1,37 @@
+img {
+    width: 40%;
+    height: 15%;
+    border: 5px rgba(0, 4, 5, 0.068) solid;
+}
+.nObjectTemplate:first-child{
+display: none;
+}
+header h1 {
+  float: left;
+  margin-top: 50px;
+}
+header h1 {
+  margin-left: 500px;
+  font-size: 50px;
+}
+header select {
+  float: right;
+  margin-right: 70px;
+  margin-top: 50px;
+}
+
+.nObjectTemplate{
+  width: 30%;
+  float: left;
+  margin: 30px;
+  padding: 50px;
+  position: relative;
+}
+option{
+font-size: 15px;
+}
+p{
+    font-size: 15px;
+position: relative;
+width: 40%;
+}

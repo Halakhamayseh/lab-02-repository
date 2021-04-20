@@ -1,37 +1,78 @@
 'use stict';
-alert('ll');
+const opKeyArray = [];
 function An(nObject) {
-    this.title = nObject.title;
-    this.img_url = nObject.img_url;
-    this.description = nObject.description;
-    this.keyword = nObject.keyword;
-    this.horns = nObject.horns;
-    // console.log(this.hoppies);
+  this.title = nObject.title;
+  this.image_url = nObject.image_url;
+  this.description = nObject.description;
+  this.keyword = nObject.keyword;
+  this.horns = nObject.horns;
 }
-An.prototype.render = function () {
-    let $nObjectClone = $('.nObjectTemplate').clone();
-    $nObjectClone.find('h3').text(this.title);
-    $nObjectClone.find('img').attr('src', this.img_url);
-    $nObjectClone.find('p').text(this.description);
-    $nObjectClone.find('h4').text(this.horns);
-    $nObjectClone.removeClass('.nObjectTemplate');
-    $nObjectClone.attr('class', this.title);
-};
-let nObject = new An('t', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F821766263244571575%2F&psig=AOvVaw1uZJ1QqGkJpPU_3vgGOyV0&ust=1618965230577000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLClnM7Ji_ACFQAAAAAdAAAAABAD', 'hh', 'key hh', 5);
-nObject.render();
-// An.readJson = () => {
-//     const ajaxSet = {
-//         method: 'get',
-//         dataType: 'josn'
-//     };
 
-//     $.ajax('data/page-1.json', ajaxSet)
-//         .then(data => {
-//             data.forEach(item => {
-//                 let nObject = new An(item);
-//                 nObject.render();
-//             });
-//         });
-// };
-// $(() => An.readJson());
+
+An.prototype.render = function () {
+  let nObjectClone = $('.nObjectTemplate').clone();
+  $('main').append(nObjectClone);
+  nObjectClone.find('h3').text(this.title);
+  nObjectClone.find('img').attr('src', this.image_url);
+  nObjectClone.find('p').text(this.description);
+  nObjectClone.attr("class",this.title);
+    nObjectClone.attr("class",`${this.keyword}`);
+    
+    
+};
+// console.log(opKeyArray);
+function readJson() {
+  const ajaxSet = {
+    method: 'get',
+    dataType: 'json'
+  };
+  $.ajax('data/page-1.json', ajaxSet).then(make);
+}
+function make(data) {
+  data.forEach((item) => {
+    let nnObject = new An(item);
+    //   console.log(nnObject.keyword);
+      nnObject.render();
+      
+    if (opKeyArray.includes(nnObject.keyword) === false) {
+      opKeyArray.push(nnObject.keyword);
+
+    }
+
+  });
+  keyRender();
+}
+
+readJson();
+///////filiter/////
+
+function keyRender() {
+  opKeyArray.forEach(e => {
+      $('select').append(`<option value=${e}>${e}</option>`);
+  });
+}
+$('select').on('change', changeHandel);
+function changeHandel() {
+    let ss = $(this).val();
+    
+    if (ss!=='default') {
+        $('div').hide();
+        $('select').show();
+        // $(`.${select}`).show();
+        console.log(ss);
+    }
+    // event.preventDefault();
+    // console.log(event);
+    // for (let i = 0; i < opKeyArray.length; i++) {
+    //     // console.log(opKeyArray[0]);
+    //     console.log(event);
+    //     if (event === opKeyArray[i]) {
+    //         console.log('g');
+    //         $('div').hide();
+    //         $(`.${sel}`).show();
+    //     }
+        
+    // }
+   
+}
 
