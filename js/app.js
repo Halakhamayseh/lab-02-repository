@@ -1,11 +1,13 @@
 'use stict';
 const opKeyArray = [];
+const objArr = [];
 function An(nObject) {
   this.title = nObject.title;
   this.image_url = nObject.image_url;
   this.description = nObject.description;
   this.keyword = nObject.keyword;
   this.horns = nObject.horns;
+  objArr.push(this);
 }
 
 
@@ -14,8 +16,8 @@ An.prototype.render = function () {
   $('main').append(nObjectClone);
   nObjectClone.find('h3').text(this.title);
   nObjectClone.find('img').attr('src', this.image_url);
+  nObjectClone.find('img').attr('alt', `${this.keyword}`);
   nObjectClone.find('p').text(this.description);
-  nObjectClone.attr("class",this.title);
     nObjectClone.attr("class",`${this.keyword}`);
     
     
@@ -53,14 +55,25 @@ function keyRender() {
 }
 $('select').on('change', changeHandel);
 function changeHandel() {
-    let ss = $(this).val();
-    
-    if (ss!=='default') {
-        $('div').hide();
-        $('select').show();
-        // $(`.${select}`).show();
-        console.log(ss);
-    }
+  let ss = $(this).val();
+  if (ss !== 'default') {
+    $('div').hide();
+    $(`.${ss}`).show();
+    ////other way to slove this issue///
+    // $('div').toArray().forEach((e) => {
+    //   console.log(e.classList);
+    //   if (e.classList.contains(ss)) {
+    //     $(`.${ss}`).show();
+    //   }
+    // });
+   }
+    //   objArr.forEach(element => {
+    //       if (element===ss) {
+            
+    //       }
+    //     });
+    //     console.log(ss);
+    // }
     // event.preventDefault();
     // console.log(event);
     // for (let i = 0; i < opKeyArray.length; i++) {
