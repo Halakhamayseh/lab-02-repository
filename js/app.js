@@ -48,11 +48,14 @@ function clickHandel() {
   console.log(pageOne);
 
   if (pageOne === 'page1Click') {
+
     $('div').hide();
+    
     readJsonPage1();
     filtirH();
-    $('div').hide();
+    
   }
+ 
 }
 
 ////////////////////////////////////////////////////
@@ -92,22 +95,34 @@ function clickHandeTwo() {
 ///////filiter/////
 
 function keyRender1() {
+  console.log('key render 1', $('option'));
+  $('option').remove();
+  console.log('After key render 1', $('option'));
   opKeyArray1.forEach(e => {
-    $('select').append(`<option value=${e}>${e}</option>`);
+
+    $('.keyWords').append(`<option value=${e}>${e}</option>`);
+    
+    
   });
 
 }
 function keyRender2() {
+  console.log('key render 2', $('option'));
+  $('option').remove();
+  console.log('After key render 2', $('option'));
   opKeyArray2.forEach(e => {
-    $('select').append(`<option value=${e}>${e}</option>`);
+    $('.keyWords').append(`<option value=${e}>${e}</option>`);
   });
 
 }
 function filtirH() {
-  $('select').on('change', changeHandel);
+  $('.keyWords').on('change', changeHandel);
   function changeHandel() {
     let ss = $(this).val();
-    if (ss !== 'default') {
+    if ((ss === 'default')){
+      $('div').show();
+    }
+    else {
       $('div').hide();
       $(`.${ss}`).show();
     }
