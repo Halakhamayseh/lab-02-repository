@@ -2,14 +2,15 @@ header {
   height: 80px;
 }
 
+
 main {
-  width: 100%;
-  margin: 70px ;
-  display: inline-block;
-  /* text-align: center; */
+  margin: 70px;
+  display: flex;
   font-size: 30px;
-  vertical-align: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+
 
 footer {
   width: 50%;

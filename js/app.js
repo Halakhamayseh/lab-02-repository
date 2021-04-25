@@ -49,7 +49,7 @@ function clickHandel() {
 
   if (pageOne === 'page1Click') {
 
-    $('div').hide();
+    $("main").children().remove();
     
     readJsonPage1();
     filtirH();
@@ -85,7 +85,7 @@ function clickHandeTwo() {
   let pageTwo = $(this).val();
   console.log(pageTwo);
   if (pageTwo === 'page2Click') {
-    $('div').hide();
+    $("main").children().remove();
     readJsonPage2();
     filtirH();
   }
@@ -129,6 +129,32 @@ function filtirH() {
   }
 }
 filtirH();
+//////////////sort//////////////////
+  let select = $(this).val();
+  if (select === 'title') {
+    objArr.sort((a, b) => {
+      let aTitle = a.title;
+      let bTitle = b.title;
+      if (aTitle < bTitle) {
+        return -1;
+      }
+      if (aTitle > bTitle) {
+        return 1;
+      }
+    });
+  }
+  if (select === 'horns') {
+    objArr.sort((a, b) => {
+      let aHorns = a.horns;
+      let bHorns = b.horns;
+      if (aHorns < bHorns) {
+        return -1;
+      }
+      if (aHorns > bHorns) {
+        return 1;
+      }
+    });
+  }
 
 ////other way to slove this issue///
 //   $('div').toArray().forEach((e) => {

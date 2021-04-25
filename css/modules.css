@@ -1,6 +1,6 @@
-img {
-    width: 40%;
-    height: 15%;
+ img {
+    width:50%;
+    height: 40%;
     border: 5px rgba(0, 4, 5, 0.068) solid;
 }
 .nObjectTemplate:first-child{
@@ -21,9 +21,9 @@ header select {
 }
 
 .nObjectTemplate{
-  width: 30%;
+  width: 80%;
   float: left;
-  margin: 30px;
+  margin:auto;
   padding: 50px;
   position: relative;
 }
@@ -33,7 +33,7 @@ font-size: 15px;
 p{
     font-size: 15px;
 position: relative;
-width: 40%;
+width:50%;
 }
 /* .buttonOT{
   flex-direction: row;
